@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.2.0.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DeviceReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e606f02-7d04-4e70-a299-3c696ad17dd3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Postgres"/>
+	<parameter name="Device_Name" class="java.lang.Long"/>
+	<queryString language="SQL">
+		<![CDATA[select 
+ kpi_1d.time ,
+ kpi_1d.device_identifier ,
+  kpi_1d.org_identifier,
+    kpi_1d.kpi_type_code,
+    kpi_type.name,
+      kpi_1d.kpi_alert_count ,
+       kpi_1d.kpi_value_avg  from kpi_1d 
+    join kpi_type on kpi_1d.kpi_type_code = kpi_type.code
+         where kpi_1d.device_identifier= $P{Device_Name}]]>
+	</queryString>
+	<field name="time" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="time"/>
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<field name="device_identifier" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="device_identifier"/>
+		<property name="com.jaspersoft.studio.field.label" value="device_identifier"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<field name="org_identifier" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="org_identifier"/>
+		<property name="com.jaspersoft.studio.field.label" value="org_identifier"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<field name="kpi_type_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kpi_type_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="kpi_type_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_type"/>
+	</field>
+	<field name="kpi_alert_count" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="kpi_alert_count"/>
+		<property name="com.jaspersoft.studio.field.label" value="kpi_alert_count"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<field name="kpi_value_avg" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="kpi_value_avg"/>
+		<property name="com.jaspersoft.studio.field.label" value="kpi_value_avg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kpi_1d"/>
+	</field>
+	<group name="time">
+		<groupExpression><![CDATA[$F{time}]]></groupExpression>
+	</group>
+	<group name="device_identifier">
+		<groupExpression><![CDATA[$F{device_identifier}]]></groupExpression>
+	</group>
+	<group name="org_identifier">
+		<groupExpression><![CDATA[$F{org_identifier}]]></groupExpression>
+	</group>
+	<group name="kpi_type_code">
+		<groupExpression><![CDATA[$F{kpi_type_code}]]></groupExpression>
+	</group>
+	<group name="name">
+		<groupExpression><![CDATA[$F{name}]]></groupExpression>
+	</group>
+	<group name="kpi_alert_count">
+		<groupExpression><![CDATA[$F{kpi_alert_count}]]></groupExpression>
+	</group>
+	<group name="kpi_value_avg">
+		<groupExpression><![CDATA[$F{kpi_value_avg}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="555" height="30" forecolor="#FFFFFF" backcolor="#494F4C" uuid="0a620d33-dba7-4e0e-963c-cbdceeb8788d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORT PER DEVICE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="40" y="0" width="130" height="30" forecolor="#000000" backcolor="#FAFEFF" uuid="c1ead758-ce0c-4468-b9a3-84b6677aaea2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORGANISATION NAME ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="30" width="100" height="30" backcolor="#33CCFF" uuid="8cdb4d56-217b-46f5-ab61-0a7633f73df8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEVICE NAME]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="30" width="100" height="30" uuid="becfe61b-ec5a-44b3-aed6-be1e64ffb4a9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Device_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="100" height="30" uuid="1148adae-3e52-482d-bf2c-68678f3f3285"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{org_identifier}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="10" width="555" height="2" uuid="62d8a38c-449a-4d74-8858-f146c7e3d28b"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="31" width="139" height="30" forecolor="#FCFAFA" backcolor="#545151" uuid="0a6186f1-2146-42c4-9af8-c6eef98214e5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58b406e1-28fd-4c3f-a039-d29e78ac8da3"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="140" y="30" width="139" height="30" forecolor="#FCFAFA" backcolor="#545151" uuid="16344bd0-8e07-4576-86f6-634413c5f254">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8475f6e-d04d-415c-a851-4d542113e4bc"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="278" y="30" width="139" height="30" forecolor="#FCFAFA" backcolor="#545151" uuid="c8193f3b-3ce2-4dd6-badf-6ec82edc5878">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44d38185-307b-4305-9f1e-bdd13fcb3004"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALERT COUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="417" y="30" width="139" height="30" forecolor="#FCFAFA" backcolor="#545151" uuid="9c3846f7-0576-48ef-8d6b-a0bee57d09ea">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b6e9809-9656-459b-9ce0-35ce123d68d4"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AVG VALUE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="139" height="125" backcolor="#C7C3C3" uuid="3a8f8c5c-6964-41d0-8a5d-40e09bdcbc41">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58b406e1-28fd-4c3f-a039-d29e78ac8da3"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="0.3"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph lineSpacingSize="1.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="139" y="0" width="139" height="125" backcolor="#C7C3C3" uuid="3c55bbd8-fdb3-4242-a169-3b25fb42b3f7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8475f6e-d04d-415c-a851-4d542113e4bc"/>
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="0.3"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="278" y="0" width="139" height="125" backcolor="#C7C3C3" uuid="574b9c82-71f0-40ce-8673-da22096f29ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44d38185-307b-4305-9f1e-bdd13fcb3004"/>
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="0.3"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{kpi_alert_count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="417" y="0" width="138" height="125" backcolor="#C7C3C3" uuid="4d59aefc-ce3b-4a25-a054-123e910b4b7d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b6e9809-9656-459b-9ce0-35ce123d68d4"/>
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="0.3"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{kpi_value_avg}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
